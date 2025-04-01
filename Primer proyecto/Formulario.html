@@ -24,14 +24,24 @@
                 <option value="poesia">Poesía</option>      
             </select><br><br>
 
-            <label for="serie">Serie:</label>   
-            <input type="text" id="serie" name="serie" norequired><br><br> <!--vi que existe el checkbox "no aplica"-->
-
             <label for="editorial">Editorial:</label>
             <input type="text" id="editorial" name="editorial" required><br><br>
 
+            <label for="serie">Serie:</label>   
+            <input type="text" id="serie" name="serie" norequired><br><br> <!--vi que existe el checkbox "no aplica"-->
+
+            <label for="edicion del libro">Edicion del libro:</label>
+            <input type="text" id="edicion" name="edicion" norequired><br><br> 
+
+            <label for="tipo de tapa">Tipo de tabla:</label>
+            <select id="tipo de tapa" name="tipo de tapa" required>
+                <option value="Elija un tipo de tapa">Elija un tipo de tapa</option>
+                <option value="tapa dura">Tapa dura</option>
+                <option value="tapa blanda">Tapa blanda</option>
+            </select><br><br>
+
             <label for="idioma">Idioma:</label>
-            <select id="idioma" name="idioma" required> <!--puedo poner todos los idiomas que exiten?-->
+            <select id="idioma" name="idioma" required> <!--poner todos los idiomas sin cargar uno x uno?-->
                 <option value="Elija un idioma">Elija un idioma</option>
                 <option value="español">Español</option>
                 <option value="ingles">Inglés</option>
@@ -40,11 +50,27 @@
                 <option value="italiano">Italiano</option>  
             </select><br><br>
 
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required><br><br>
+            <label for="año de publicacion">Año de publicacion :</label>
+            <input type="number" id="año de publicacion" name="año de publicacion" min="1900" max="2025" required><br><br>
             
-            <label for="mensaje">Mensaje:</label><br>
-            <textarea id="mensaje" name="mensaje" rows="4" cols="50"></textarea><br><br>
+            <fieldset>
+                <legend>Condiciones del producto:</legend>
+                <div>
+                    <input type="radio" id="nuevo" name="condicion" value="nuevo">
+                    <label for="nuevo">Nuevo</label>
+                </div>
+                <div>
+                    <input type="radio" id="usado" name="condicion" value="usado">
+                    <label for="usado">Usado</label>
+                </div>
+                <div>
+                    <input type="radio" id="restaurado" name="condicion" value="restaurado">
+                    <label for="restaurado">Restaurado</label>
+                </div>
+            </fieldset>
+            <br>
+            <label for="foto">Seleccionar fotos:</label>
+            <input type="file" id="foto" name="foto" accept="image/png, image/jpg, image/webp" multiple><br><br>
             
             <input type="submit" value="Enviar">
     </body>
