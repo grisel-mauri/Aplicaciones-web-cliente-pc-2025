@@ -3,38 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=, initial-scale=1.0">
-    <title>Libros</title>
+    <title>Boek Libros</title>
+    <link rel="stylesheet" href="./style/style.css">
 </head>
 <body>
     <header>
-        <h1>Titulo de la web</h1>
-        <div>
-            <ul>
-                <li>Menu</li>
-                <li>Catálogo</li>
-                <li>Contacto</li>
-            </ul>
-        </div>
+        <h1>Boek Libros</h1>
+        <input type="text" placeholder="Buscar...">
+        <nav class="header-nav">
+            <a href="#">Inicio</a>
+            <a href="#">Catálogo</a>
+            <a href="#">Contacto</a>
+            <a href="#">Sobre nosotros</a>
+        </nav>
     </header>
-    <main>
-        <h2>Catálogo</h2>
-        <h4>Cronicas marcianas</h4>
-        <p>Sinopsis:</p>
-        <p>"Crónicas marcianas" de Ray Bradbury narra la colonización de Marte por parte de los humanos, explorando temas como el choque cultural, la naturaleza humana y la fragilidad de la civilización. A través de relatos interconectados, el libro muestra cómo los colonos terrestres llevan consigo sus esperanzas y miedos, transformando el planeta rojo y, a menudo, destruyendo la cultura marciana nativa.</p>
-        <a href="https://es.wikipedia.org/wiki/Cr%C3%B3nicas_marcianas">Producto</a>
-        <br>
-        <img src = "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1562789202i/1950540.jpg" width="200" height="300">
-        <h4>Fahrenheit 451</h4>
-        <p>Sinopsis</p>
-        <p>"Fahrenheit 451" es una novela distópica de Ray Bradbury, publicada en 1953. La historia se desarrolla en una sociedad futura donde los libros están prohibidos y los "bomberos" tienen la tarea de quemarlos. El protagonista, Guy Montag, es un bombero que comienza a cuestionar su papel en la sociedad y se rebela contra la censura y la opresión. La novela explora temas como el control del conocimiento, la importancia de la libertad de pensamiento y los peligros del conformismo.</p>
-        <a href="https://de.wikipedia.org/wiki/Fahrenheit_451">Producto</a>
-        <br>
-        <img src = "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/FAHRENHEIT_451_by_Ray_Bradbury%2C_Corgi_1957._160_pages._Cover_by_John_Richards.jpg/800px-FAHRENHEIT_451_by_Ray_Bradbury%2C_Corgi_1957._160_pages._Cover_by_John_Richards.jpg" alt="Cronicas marcianas" width="200" height="300">
+    <div>
+        <aside>
+            <h2>Filtros</h2>
+            <label><input type="checkbox">Ofertas</label>
+            <h4>Categorias</h4>
+            <ul>
+                <li><input type="checkbox">Ficción</li>    
+                <li><input type="checkbox">No Ficción</li>
+                <li><input type="checkbox">Fantasía</li>       
+                <li><input type="checkbox">Ciencia Ficción</li>
+                <li><input type="checkbox">Historia</li>
+                <li><input type="checkbox">Biografía</li>
+                <li><input type="checkbox">Poesía</li>
+            </ul>
+            <label for="precio">Precio:</label>
+            <label for="precio-min">Mínimo:</label>
+            <input type="text" placeholder="1000">
+            <label  for="precio-max">Máximo:</label>
+            <input type="text" placeholder="99999">
+
+            <label for="ordenar">Ordenar por:</label>
+            <select id="ordenar" name="ordenar">
+                <option value="top-selling">Más vendidos</option>
+                <option value="price-asc">Precio: menor a mayor</option>
+                <option value="price-desc">Precio: mayor a menor</option>
+                <option value="a-z">A-Z</option>
+                <option value="z-a">Z-A</option>
+            </select>
+
+        </aside>
+
+        <main>
+                <article>
+                    <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1562789202i/1950540.jpg" width="200" height="300"" alt="Nombre del producto">
+                    <h3>Crónicas Marcianas</h3>
+                    <p>Rad Bradbury</p>
+                    <p>Precio: $1000</p>
+                    <button>Comprar</button>
+                </article>
+                <article>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/bf/FAHRENHEIT_451_by_Ray_Bradbury%2C_Corgi_1957._160_pages._Cover_by_John_Richards.jpg" width="200" height="300"" alt="Nombre del producto">
+                    <h3>Fahrenheit</h3>
+                    <p>Rad Bradbury</p>
+                    <p>Precio: $2000</p>
+                    <button>Comprar</button>
+                </article>
+            </section>
+
+        </main>
+    </div>
+
+    <footer>
+        <div class="newseller">
+            <h3>Newsletter</h3>
+            <p>Suscríbete para recibir novedades y ofertas exclusivas.</p>
+            <input type="email" placeholder="Ingresa tu email"> 
+            <button>Enviar</button>
+        </div>
         
 
-    </main>
-    <footer>
-        <p>2025</p>
+        <div class="contact">
+            <h3>Atención al cliente</h3>
+            <ul>
+                <li>5555-5555</li>
+                <li>grisel.mauri@gmail.com</li> 
+                <li>Loet 555 - Buenos Aires</li>
+            </ul>
+        </div>
+        
+
+        <p>Todos los derechos reservados. 2025</p>
     </footer>
     
 </body>
