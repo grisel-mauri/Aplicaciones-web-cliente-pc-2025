@@ -1,9 +1,9 @@
 @import url(https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap);
-
 :root {
     --background-color: #f0f0f0;
     --background-color2: #5cbe9e;
     --text-color: #333;
+    --text-color2: #730888;
 }
 
 * {
@@ -21,14 +21,91 @@ body {
 }
 
 header {
+    position: fixed;
+    width: 100%;
+    height: 20%;
     background-color: var(--background-color2);
-    color: var(--text-color);
-    padding: 20px;  
+    padding: 20px; 
+    h1{
+        top: 20px;
+        padding-left: 40px
+    }
+    z-index: 10;
 }
+
+.header-nav {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    list-style: none;
+    padding-left: 40px;
+    a {
+        text-decoration: none;
+        color: var(--text-color2);
+    }
+
+}
+
+.search-bar input {
+    position: absolute;
+    right: 100px;
+    top: 30px;
+    width: 400px;
+    height: 40px;
+    border: 1px solid var(--text-color2);
+    background-color: inherit;
+    padding: 10px;
+}
+
+.container {
+    display: flex;
+    min-height: calc(100vh - 170px)
+    
+    
+}
+
+aside {
+    width: 300px;
+    padding: 60px;
+
+    ul {
+        list-style: none;
+        gap: 20px;
+       
+    }
+}
+
+aside input[type=checkbox] {
+    appearance: none;
+    width: 10px;
+    height: 10px;
+    border: solid 1px var(--text-color);
+
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
 
 
 footer {
     background-color: var(--background-color2);
     color: var(--text-color);
     padding: 20px;
+    ul {
+        list-style: none;
+    }
+}
+
+.newsletter{
+    color: var(--text-color2)
+}
+
+.small-text {
+    font-size: 0.8em;
+    color: var(--text-color);
 }

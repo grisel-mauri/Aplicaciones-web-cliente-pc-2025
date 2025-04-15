@@ -9,54 +9,66 @@
 <body>
     <header>
         <h1>Boek Libros</h1>
-        <input type="text" placeholder="Buscar...">
-        <nav class="header-nav">
-            <a href="#">Inicio</a>
-            <a href="#">Catálogo</a>
-            <a href="#">Contacto</a>
-            <a href="#">Sobre nosotros</a>
+        <nav class="search-bar">
+            <input type="text" placeholder="Buscar...">
+        </nav>
+        <nav>
+            <ul class="header-nav">
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Catálogo</a></li>
+                <li><a href="#">Contacto</a></li>
+                <li><a href="#">Sobre nosotros</a></li>
+            </ul>
         </nav>
     </header>
-    <div>
+    <div class="container">
         <aside>
             <h2>Filtros</h2>
             <label><input type="checkbox">Ofertas</label>
-            <h4>Categorias</h4>
-            <ul>
-                <li><input type="checkbox">Ficción</li>    
-                <li><input type="checkbox">No Ficción</li>
-                <li><input type="checkbox">Fantasía</li>       
-                <li><input type="checkbox">Ciencia Ficción</li>
-                <li><input type="checkbox">Historia</li>
-                <li><input type="checkbox">Biografía</li>
-                <li><input type="checkbox">Poesía</li>
-            </ul>
-            <label for="precio">Precio:</label>
-            <label for="precio-min">Mínimo:</label>
-            <input type="text" placeholder="1000">
-            <label  for="precio-max">Máximo:</label>
-            <input type="text" placeholder="99999">
+            <div class="category">
+                <h4>Categorias</h4>
+                <ul>
+                    <li><input type="checkbox">Ficción</li>    
+                    <li><input type="checkbox">No Ficción</li>
+                    <li><input type="checkbox">Fantasía</li>       
+                    <li><input type="checkbox">Ciencia Ficción</li>
+                    <li><input type="checkbox">Historia</li>
+                    <li><input type="checkbox">Biografía</li>
+                    <li><input type="checkbox">Poesía</li>
+                </ul>
+            </div>
 
-            <label for="ordenar">Ordenar por:</label>
-            <select id="ordenar" name="ordenar">
-                <option value="top-selling">Más vendidos</option>
-                <option value="price-asc">Precio: menor a mayor</option>
-                <option value="price-desc">Precio: mayor a menor</option>
-                <option value="a-z">A-Z</option>
-                <option value="z-a">Z-A</option>
-            </select>
+            <div class="price.filter">
+                <label for="precio">Precio:</label>
+                <label for="precio-min">Mínimo:</label>
+                <input type="text" placeholder="1000">
+                <label  for="precio-max">Máximo:</label>
+                <input type="text" placeholder="99999">
+            </div>
+
+            <div class="order-by">
+                <label for="ordenar">Ordenar por:</label>
+                <select id="ordenar" name="ordenar">
+                    <option value="top-selling">Más vendidos</option>
+                    <option value="price-asc">Precio: menor a mayor</option>
+                    <option value="price-desc">Precio: mayor a menor</option>
+                    <option value="a-z">A-Z</option>
+                    <option value="z-a">Z-A</option>
+                </select>
+            </div>
 
         </aside>
 
         <main>
-                <article>
+            <section class="product-grid">
+                <article class="product-card">
                     <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1562789202i/1950540.jpg" width="200" height="300"" alt="Nombre del producto">
                     <h3>Crónicas Marcianas</h3>
                     <p>Rad Bradbury</p>
                     <p>Precio: $1000</p>
                     <button>Comprar</button>
                 </article>
-                <article>
+                <article class="product-card">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/b/bf/FAHRENHEIT_451_by_Ray_Bradbury%2C_Corgi_1957._160_pages._Cover_by_John_Richards.jpg" width="200" height="300"" alt="Nombre del producto">
                     <h3>Fahrenheit</h3>
                     <p>Rad Bradbury</p>
@@ -69,7 +81,7 @@
     </div>
 
     <footer>
-        <div class="newseller">
+        <div class="newsletter">
             <h3>Newsletter</h3>
             <p>Suscríbete para recibir novedades y ofertas exclusivas.</p>
             <input type="email" placeholder="Ingresa tu email"> 
@@ -87,7 +99,7 @@
         </div>
         
 
-        <p>Todos los derechos reservados. 2025</p>
+        <p class="small-text">Todos los derechos reservados. 2025</p>
     </footer>
     
 </body>
