@@ -2,6 +2,7 @@
 :root {
     --background-color: #f0f0f0;
     --background-color2: #5cbe9e;
+    --background-color3: #7dd6b9;
     --text-color: #333;
     --text-color2: #730888;
 }
@@ -22,77 +23,128 @@ body {
 
 header {
     position: fixed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
     height: 20%;
     background-color: var(--background-color2);
-    padding: 20px; 
-    h1{
-        top: 20px;
-        padding-left: 40px
-    }
+    padding: 2rem 4rem; 
     z-index: 10;
 }
 
 .header-nav {
     display: flex;
     flex-direction: row;
-    gap: 40px;
+    align-self: flex-start;
+    gap: 2rem;
     list-style: none;
-    padding-left: 40px;
-    a {
-        text-decoration: none;
-        color: var(--text-color2);
-    }
-
+    padding-left: 2.5rem;
+        a {
+            text-decoration: none;
+            color: var(--text-color2);
+        }
 }
 
 .search-bar input {
-    position: absolute;
-    right: 100px;
-    top: 30px;
-    width: 400px;
-    height: 40px;
+    width: 25rem;
+    height: 2.5rem;
     border: 1px solid var(--text-color2);
-    background-color: inherit;
-    padding: 10px;
+    background-color: var(--background-color3);
+    padding: 0.5rem;
 }
+
+
 
 .container {
     display: flex;
-    min-height: calc(100vh - 170px)
-    
-    
+    min-height: 100vh;
+    padding-top: 10%;   
 }
 
 aside {
-    width: 300px;
-    padding: 60px;
-
+    width: 20rem;
+    padding-left: 60px;
     ul {
         list-style: none;
         gap: 20px;
-       
+        line-height: 2; 
     }
 }
 
 aside input[type=checkbox] {
     appearance: none;
-    width: 10px;
-    height: 10px;
+    width: 15px;
+    height: 15px;
     border: solid 1px var(--text-color);
+    margin-right: 0.5rem;
+}
 
+.price-range {
+    display: flex;
+    gap: 1.5rem;
+
+    .form-label {
+        display: flex;
+        flex-direction: column;
+    }
+    input {
+        width: 5rem;
+        height: 2rem;
+        background-color: inherit;
+        border: solid 1px var(--text-color2);
+        padding: 0.5rem;
+    }
+    button {
+        width: 4rem;
+        height: 2rem;
+        border: solid 1px var(--text-color2);
+        background-color: inherit;
+        cursor: pointer
+    }
+}
+
+#order-by {
+        border: solid 1px var(--text-color2);
+        background-color: inherit;
+        height: 2rem;
+}
+
+main{
+    flex-grow: 1;
 }
 
 .product-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: 20px;
     padding: 20px;
+}
+
+.product-card {
+    box-shadow: 10px 10px 20px rgba(62, 62, 62, 0.1);
+    border-radius: 10px;
+    padding: 0.5rem;
+    .price {
+        font-weight: bold;
+    }
+    img {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+    }
+    button {
+        background-color: var(--background-color2);
+        color: var(--text-color2);
+        border: none;
+        padding: 0.5rem;
+    }
 }
 
 
 
 footer {
+    height: 15rem;
     background-color: var(--background-color2);
     color: var(--text-color);
     padding: 20px;
@@ -101,11 +153,48 @@ footer {
     }
 }
 
-.newsletter{
-    color: var(--text-color2)
+.newsletter {
+    color: var(--text-color2);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1rem;
+    input {
+        background-color: var(--background-color3); /* no hace efecto */
+        border: solid 1px var(--text-color2);
+        padding: 0.5rem;
+        width: 15rem;
+        height: 2rem;
+    }
+    button {
+        border: none;
+        background-color: transparent;
+        color: var(--text-color2);
+        cursor: pointer;
+        text-decoration: underline;
+        border-radius: 5px;
+    }
 }
 
+.contact {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.8rem;
+    padding: 1rem 0 0 6rem;
+}
 .small-text {
+    display: flex;
     font-size: 0.8em;
     color: var(--text-color);
+    justify-content: center;
+    align-items: flex-end
+}
+
+@media (max-width: 468px) {
+    header {
+        flex-direction: column;
+    }
+    .container {
+        flex-direction: column;
+    }
 }

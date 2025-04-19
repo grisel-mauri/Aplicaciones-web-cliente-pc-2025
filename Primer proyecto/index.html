@@ -2,16 +2,13 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Boek Libros</title>
     <link rel="stylesheet" href="./style/style.css">
 </head>
 <body>
     <header>
         <h1>Boek Libros</h1>
-        <nav class="search-bar">
-            <input type="text" placeholder="Buscar...">
-        </nav>
         <nav>
             <ul class="header-nav">
                 <li><a href="#">Inicio</a></li>
@@ -19,6 +16,9 @@
                 <li><a href="#">Contacto</a></li>
                 <li><a href="#">Sobre nosotros</a></li>
             </ul>
+        </nav>
+        <nav class="search-bar">
+            <input type="text" placeholder="Buscar...">
         </nav>
     </header>
     <div class="container">
@@ -38,17 +38,22 @@
                 </ul>
             </div>
 
-            <div class="price.filter">
-                <label for="precio">Precio:</label>
-                <label for="precio-min">Mínimo:</label>
-                <input type="text" placeholder="1000">
-                <label  for="precio-max">Máximo:</label>
-                <input type="text" placeholder="99999">
-            </div>
+            <form>
+                <h4>Precios</h4>
+                <div class="price-range">
+                        <label class="form-label">Mínimo:
+                            <input type="number" placeholder="1000">
+                        </label>
+                        <label class= "form-label">Máximo:
+                            <input type="number" placeholder="99999">
+                        </label>
+                        <button type="submit">Aplicar</button>
+                </div>
+            </form>
 
             <div class="order-by">
-                <label for="ordenar">Ordenar por:</label>
-                <select id="ordenar" name="ordenar">
+                <h4>Ordenar por</h4>
+                <select id="order-by" name="order-by">
                     <option value="top-selling">Más vendidos</option>
                     <option value="price-asc">Precio: menor a mayor</option>
                     <option value="price-desc">Precio: mayor a menor</option>
@@ -61,20 +66,7 @@
 
         <main>
             <section class="product-grid">
-                <article class="product-card">
-                    <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1562789202i/1950540.jpg" width="200" height="300"" alt="Nombre del producto">
-                    <h3>Crónicas Marcianas</h3>
-                    <p>Rad Bradbury</p>
-                    <p>Precio: $1000</p>
-                    <button>Comprar</button>
-                </article>
-                <article class="product-card">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/bf/FAHRENHEIT_451_by_Ray_Bradbury%2C_Corgi_1957._160_pages._Cover_by_John_Richards.jpg" width="200" height="300"" alt="Nombre del producto">
-                    <h3>Fahrenheit</h3>
-                    <p>Rad Bradbury</p>
-                    <p>Precio: $2000</p>
-                    <button>Comprar</button>
-                </article>
+                
             </section>
 
         </main>
@@ -84,8 +76,10 @@
         <div class="newsletter">
             <h3>Newsletter</h3>
             <p>Suscríbete para recibir novedades y ofertas exclusivas.</p>
-            <input type="email" placeholder="Ingresa tu email"> 
-            <button>Enviar</button>
+            <form id="newsletter-form">
+                <input type="email" placeholder="Ingresa tu email"> 
+                <button id="btn-newsletter">Enviar</button>
+            </form>
         </div>
         
 
@@ -103,4 +97,5 @@
     </footer>
     
 </body>
+<script src="./scripts/app.js"></script>
 </html>
