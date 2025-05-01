@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boek Libros</title>
+    <link rel="stylesheet" href="./style/style.css">
+    <script src="https://kit.fontawesome.com/7e841b83ba.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <img src= "./images/logo-boek.png" alt="Boek Libros">
+        <nav>
+            <ul class="header-nav">
+                <li><a href="#home">Inicio</a></li>
+                <li><a href="#cataloge">Catálogo</a></li>
+                <li><a href="#contact">Contacto</a></li>
+                <li><a href="#about-us">Sobre nosotros</a></li>
+            </ul>
+        </nav>
+        <nav class="search-bar">
+            <input type="text" placeholder="Buscar...">
+            <button type="submit" class="search-button">
+                <i class="fas fa-search"></i>
+            </button>
+        </nav>
+    </header>
+
+    <!--Inicio-->
+    <div id="home">
+        
+
+
+
+    </div>
+    <!--Categorias-->
+    <div id="#catalogue" class="container">
+        <aside>
+            <h2>Filtros</h2>
+            <label><input type="checkbox">Ofertas</label>
+            <div class="category">
+                <h4>Categorias</h4>
+                <ul>
+                    <li><input type="checkbox">Ficción</li>    
+                    <li><input type="checkbox">No Ficción</li>
+                    <li><input type="checkbox">Fantasía</li>       
+                    <li><input type="checkbox">Ciencia Ficción</li>
+                    <li><input type="checkbox">Historia</li>
+                    <li><input type="checkbox">Biografía</li>
+                    <li><input type="checkbox">Poesía</li>
+                </ul>
+            </div>
+
+            <form>
+                <h4>Precios</h4>
+                <div class="price-range">
+                        <label class="form-label">Mínimo:
+                            <input type="number" placeholder="1000">
+                        </label>
+                        <label class= "form-label">Máximo:
+                            <input type="number" placeholder="99999">
+                        </label>
+                        <label class="form-submit">
+                            <button type="submit">Aplicar</button>
+                        </label>
+                </div>
+            </form>
+
+            <div class="order-by">
+                <h4>Ordenar por</h4>
+                <select id="order-by" name="order-by">
+                    <option value="top-selling">Más vendidos</option>
+                    <option value="price-asc">Precio: menor a mayor</option>
+                    <option value="price-desc">Precio: mayor a menor</option>
+                    <option value="a-z">A-Z</option>
+                    <option value="z-a">Z-A</option>
+                </select>
+            </div>
+
+        </aside>
+
+        <main>
+            <section class="product-grid">
+                
+            </section>
+
+        </main>
+    </div>
+
+
+    <footer>
+        <div class="newsletter">
+            <h3>Newsletter</h3>
+            <p>Suscríbete para recibir novedades y ofertas exclusivas.</p>
+            <form id="newsletter-form">
+                <input type="email" placeholder="Ingresa tu email"> 
+                <button id="btn-newsletter">Enviar</button>
+            </form>
+        </div>
+        <div class="social-media">
+            <ul>
+                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+            </ul>
+        </div>
+        
+        <p class="small-text">Todos los derechos reservados. 2025</p>
+    </footer>
+    
+</body>
+<script src="./scripts/app.js"></script>
+</html>
