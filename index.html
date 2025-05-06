@@ -13,7 +13,7 @@
         <nav>
             <ul class="header-nav">
                 <li><a href="#home">Inicio</a></li>
-                <li><a href="#cataloge">Catálogo</a></li>
+                <li ><a href="#cataloge">Catálogo</a></li>
                 <li><a href="#contact">Contacto</a></li>
                 <li><a href="#about-us">Sobre nosotros</a></li>
             </ul>
@@ -28,13 +28,31 @@
 
     <!--Inicio-->
     <div id="home">
-        
+        <section class="home-section">
+                <div id="recommendations">
+                    <img src= "./images/carrie.png" alt="carrie">
+                </div>
+                <div id="titles">
+                    <label><a href="#"><span>CARRIE</span><br>Stephen King</br></a></label>
+                    <label><a href="#"><span>FRANKESTEIN</span><br>Mary Shelley</br></a></label>
+                    <label><a href="#"><span>EL RESPLANDOR</span><br>Stephen King</br></a></label>
+                    <label><a href="#"><span>ASESINATO EN EL ORIENT EXPRESS</span><br>Agatha Christie</br></a></label>
+                    <label><a href="#"><span>LEXICO FAMILIAR</span><br>Natalia Ginzburg</br></a></label>
+                </div>
+                <div id="news">
+                    <label id=news-title><h5>NOVEDADES</h5></label>
+                    <label class="news-image" id="lae"><img src="./images/la-amiga-estupenda.png" alt="la-amiga-estupenda"></label>
+                    <label class="footer-image" id="lae-footer">La amiga estupenda, Elena Ferrante</label>
+                    <label class="news-image" id="ddd"><img src="./images/la-campana-de-cristal.png" alt="la-campana-de-cristal"></label>
+                    <label class="footer-image" id="ddd-footer">La campana de cristal, Sylvia Plath</label>
+                </div>
+        </section>      
+    </div>   
 
 
 
-    </div>
     <!--Categorias-->
-    <div id="#catalogue" class="container">
+    <div class="container" id="cataloge">
         <aside>
             <h2>Filtros</h2>
             <label><input type="checkbox">Ofertas</label>
@@ -50,7 +68,6 @@
                     <li><input type="checkbox">Poesía</li>
                 </ul>
             </div>
-
             <form>
                 <h4>Precios</h4>
                 <div class="price-range">
@@ -65,7 +82,6 @@
                         </label>
                 </div>
             </form>
-
             <div class="order-by">
                 <h4>Ordenar por</h4>
                 <select id="order-by" name="order-by">
@@ -76,18 +92,32 @@
                     <option value="z-a">Z-A</option>
                 </select>
             </div>
-
         </aside>
 
         <main>
-            <section class="product-grid">
-                
-            </section>
-
+            <section class="product-grid"id="product-grid"></section>
         </main>
     </div>
 
 
+    <!--Contacto-->
+    <div id="contact">
+        <h1>Contacto</h1>
+        <form id="contact-form">
+            <label for="name">Nombre:</label>
+            <input type="text" id="name" name="name" placeholder="Maria Perez" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="mariaperes@..." required>
+            
+            <label for="message">Mensaje:</label>
+            <textarea id="message" name="message" rows="4" placeholder="Tu mensaje..."></textarea>
+            
+            <button type="submit">Enviar</button>  
+    </div>
+
+
+    <!--Footer-->
     <footer>
         <div class="newsletter">
             <h3>Newsletter</h3>
