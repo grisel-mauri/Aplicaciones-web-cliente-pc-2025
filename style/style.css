@@ -249,6 +249,7 @@ main{
     box-shadow: 10px 10px 20px rgba(62, 62, 62, 0.1);
     border-radius: 5px;
     padding: 0.5rem;
+    
 }
 .product-card img {
     width: 100%;
@@ -264,10 +265,14 @@ main{
     color: var(--text-color2);
     border: none;
     padding: 0.5rem;
+    cursor: pointer;
     transition: transform 0.3s ease-in-out;
     &:hover {
         transform: scale(1.05); 
     }
+}
+p {
+    font-size:0.8rem;
 }
 
 
@@ -316,6 +321,33 @@ main{
     }
     
 }
+
+/*Book-description*/
+.product-description {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    grid-template-rows: 100%;
+    padding:9.5rem 0 1rem 3rem;
+    max-height: 100vh;
+.book-details {
+    grid-column-start: 1;
+    }
+.sinopsis {
+    grid-column-start: 2;
+}
+.book-image {
+    grid-column-start: 3;
+    display: flex;
+    justify-content: center;
+}
+.book-image img{ 
+    max-height: 100%;
+    justify-self: center;
+    }
+}
+
+
+
 /*Footer*/
 
 footer {
