@@ -7,7 +7,6 @@
     --text-color2: #730888;
     --grey-color: #ccc;
 }
-
 * {
     box-sizing: border-box;
     margin: 0;
@@ -80,6 +79,12 @@ header {
     cursor: pointer;
     color: var(--text-color2);  
     font-size: 0.8rem;
+}
+
+.cart {
+    font-size: 1.5rem;
+    color: var (--text-color2) ;
+    padding: 1rem;
 }
 
 /*Home*/
@@ -329,11 +334,39 @@ p {
     grid-template-rows: 100%;
     padding:9.5rem 0 1rem 3rem;
     max-height: 100vh;
+    
 .book-details {
     grid-column-start: 1;
-    }
+    padding-left: 5rem;
+    line-height: 2rem;
+    button {
+        background-color: var(--background-color2);
+        color: var(--text-color2);
+        border: none;
+        padding: 0.5rem;
+        margin: 1rem 0 2rem 0;
+        transition: transform 0.3s ease-in-out;
+        &:hover {
+        transform: scale(1.05); 
+        cursor: pointer;
+        } 
+        
+    } 
+}
+.descrip {
+        display: flex;
+        flex-direction: row;
+}
+.descrip-bold {
+            font-weight: bold;
+        }
+
 .sinopsis {
     grid-column-start: 2;
+    display: flex;
+    flex-direction: column;
+    max-width: 15rem;
+    line-height: 1.8rem;
 }
 .book-image {
     grid-column-start: 3;
@@ -344,6 +377,26 @@ p {
     max-height: 100%;
     justify-self: center;
     }
+}
+
+/*Carrito*/
+.cart-container {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 100%;
+    max-height: 100vh;
+    padding-top: 9.5%;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    
+}
+.cart-form {
+    grid-column-start: 1;
+    display: flex;
+    flex-direction: column;
+}
+.cart-items {
+    grid-column-start: 2;
 }
 
 
