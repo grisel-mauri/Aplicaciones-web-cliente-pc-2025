@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boek Libros</title>
+    <link rel="stylesheet" href="./style/style.css">
+    <script src="https://kit.fontawesome.com/7e841b83ba.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <img src= "./images/logo-boek.png" alt="Boek Libros">
+        <nav>
+            <ul class="header-nav">
+                <li><a href="./index.html">Inicio</a></li>
+                <li ><a href="./cataloge.html">Catálogo</a></li>
+                <li><a href="./contact.html">Contacto</a></li>
+            </ul>
+        </nav>
+        <nav class="search-bar">
+            <input id="input-search-products" type="text" placeholder="Buscar...">
+            <button type="submit" class="search-button">
+                <i class="fas fa-search"></i>
+            </button>
+        </nav>
+         <nav class="cart">
+            <a href="./cart.html"><i class="fas fa-shopping-cart"></i></a>
+        </nav>
+    </header>
+
+<!--Editar producto-->
+    <div class="edit-product">
+        <h1>Editar producto</h1>
+        <form>
+            <label for="name">Nombre:</label>
+            <input type="text" placeholder="Carrie" required>
+
+            <label for="autor">Autor:</label>
+            <input type="text" placeholder="Stephen King" required>
+
+            <label for="price">Precio:</label>
+            <input type="number" placeholder="$1000" required>
+
+            <label for="genero">Autor:</label>
+            <input type="text" placeholder="Stephen King" required>
+
+            <label for="genero">Género:</label>
+            <select id="edit-gender">
+                <option value="ficcion">Ficción</option>
+                <option value="no-ficcion">No ficción</option>
+                <option value="fantasia">Fantasia</option>
+                <option value="ciencia-ficcion">Ciencia Ficción</option>
+                <option value="historia">Historia</option>
+                <option value="biografia">Biografía</option>    
+                <option value="poesia">Poesía</option>
+            </select>
+            
+            <label for="sinopsis">Sinopsis:</label>
+            <textarea rows="4" placeholder="Sinopsis..."></textarea>
+
+            <label for="image">Imagen del producto:</label>
+            <input id="edit-image" type="file" accept="image/*" required>
+        
+            <button type="submit">Guardar cambios</button>  
+    </div>
+
+
+    <!--Footer-->
+    <footer>
+        <div class="newsletter">
+            <h3>Newsletter</h3>
+            <p>Suscríbete para recibir novedades y ofertas exclusivas.</p>
+            <form id="newsletter-form">
+                <input type="email" placeholder="Ingresa tu email"> 
+                <button id="btn-newsletter">Enviar</button>
+            </form>
+        </div>
+        <div class="social-media">
+            <ul>
+                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+            </ul>
+        </div>
+        
+        <p class="small-text">Todos los derechos reservados. 2025</p>
+    </footer>
+    
+</body>
+<script src="./scripts/app.js"></script>
+</html>
