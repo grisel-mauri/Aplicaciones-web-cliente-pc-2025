@@ -29,32 +29,34 @@
     </header>
 
     <!--Carrito-->
-    <div class="cart-container">
-        <div class="cart-form">
-            <h1>Carrito de Compras</h1>
-            <p>Datos de contacto</p>
-            <form id="cart-form">
-                <label for="name">Nombre:</label>
-                <input type="text" id="name" name="name" placeholder="Maria Perez..." required>
+    <div class="cart-details">
+        <form class="cart-form">
+            <h2>Datos de contacto</h2>
+            <label for="name">Nombre:</label>
+            <input type="text" id="name" name="name" placeholder="Maria Perez..." required>
 
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" placeholder="mariaperez@..." required>
-                <input type="checkbox">Quiero recibir novedades y ofertas exclusivas</input>"
+            <label for="email">Email:</label>
+            <div class="checkbox-email">
+                <input type="email" id="email" name="email" placeholder="mariaperez@..." required><br>
+                <input type="checkbox">Quiero recibir novedades y ofertas exclusivas</input>
+            </div>
 
-                <label for="address">Dirección:</label>
-                <input type="text" id="address" name="address" placeholder="Dirección..." required>
+            <label for="address">Dirección:</label>
+            <input type="text" id="address" name="address" placeholder="Dirección..." required>
 
-                <button type="submit">Finalizar Compra</button>
-            </form>
-        </div>
-        <div class="cart-items">
+            <button type="submit">Finalizar Compra</button>
+        </form>
+        
+        <section class="cart-grid">
             <h2>Productos en el carrito</h2>
-            <ul id="cart-list">
-                <!-- Aquí se agregarán los productos del carrito -->
-            </ul>
+            <div class="cart-list">
+                <div class="cart-card"></div>
+            </div>
             <div class="total-price">
-                <p>Total: $<span id="total-amount">0</span></p>
-        </div>
+                <h4>Total: $<span id="total-amount">0</span></h4>
+            </div>
+        </section>
+    
     </div>
 
 
@@ -79,5 +81,5 @@
     </footer>
     
 </body>
-<script src="./scripts/app.js"></script>
+<script src="./scripts/cart.js"></script>
 </html>

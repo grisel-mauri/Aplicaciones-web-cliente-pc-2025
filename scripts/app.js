@@ -4,6 +4,7 @@ const TABLE_NAME = 'products';
 const API_URL = `https://api.airtable.com/v0/${BASE_ID}/${TABLE_NAME}`;
 
 const products = [];
+const cartProducts = JSON.parse(localStorage.getItem('cart')) || [];
 
 const addToAirtable = async (product) => {
     const itemAirtable = {
@@ -30,6 +31,7 @@ const getProducts = async () => {
     });
     const data = await response.json();
     console.log('data', data);
+    
     const productsMaped = data.records.map(item => {
         return {
         image: item.fields.image,
@@ -57,7 +59,7 @@ function createProductCard(product) {
 
     const image=document.createElement('img');
     image.src=product.image;  
-    ImageBitmap.alt=product.name;
+    image.alt=product.name;
 
     const title=document.createElement('h3');
     title.textContent=product.title;
@@ -75,7 +77,16 @@ function createProductCard(product) {
     gender.textContent = product.gender;
 
     const button=document.createElement('button');
-    button.textContent='Comprar';
+    button.textContent='Agregar al carrito';
+    button.addEventListener('click', () => {
+        const exists = cartProducts.find(item => item.title === product.title);
+        if (!exists) {
+            cartProducts.push(product);
+            localStorage.setItem('cart', JSON.stringify(cartProducts));
+            console.log('Producto agregado al carrito');
+        }
+
+    });
 
     card.appendChild(image);
     card.appendChild(title);
@@ -131,7 +142,7 @@ renderProducts(products);
 
 
 // boton newsletter
-const newsletterbutton = document.querySelector('#newsletter-form');
+const newsletterbutton = document.querySelector('#btn-newsletter');
 
 newsletterbutton.addEventListener('click', () => {
     alert ('Gracias por suscribirte a nuestro newsletter!');
