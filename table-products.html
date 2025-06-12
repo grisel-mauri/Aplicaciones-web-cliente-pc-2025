@@ -29,39 +29,23 @@
         </nav>
     </header>
 
-<!--Editar producto-->
-    <div class="edit-product">
-        <h1>Editar producto</h1>
-        <form onsubmit="updateSubmit(event)">
-            <label>Nombre:</label>
-            <input type="text" id="product-title" placeholder="Carrie">
-
-            <label>Autor:</label>
-            <input type="text" id="product-autor" placeholder="Stephen King">
-
-            <label>Precio:</label>
-            <input type="number" id="product-price" placeholder="$1000">
-
-            <label>Género:</label>
-            <select id="product-gender">
-                <option value="ficcion">Ficción</option>
-                <option value="no-ficcion">No ficción</option>
-                <option value="fantasia">Fantasia</option>
-                <option value="ciencia-ficcion">Ciencia Ficción</option>
-                <option value="historia">Historia</option>
-                <option value="biografia">Biografía</option>    
-                <option value="poesia">Poesía</option>
-            </select>
-            
-            <label>Sinopsis:</label>
-            <textarea rows="4" id="product-sinopsis" placeholder="Sinopsis..."></textarea>
-
-            <label>Imagen del producto:</label>
-            <input id="product-image" type="file" accept="image/*">
-        
-            <input type="submit" id="save">Guardar cambios</input>  
-    </div>
-
+<!--Tabla productos-->
+    <div class="table-products">
+        <h2>Productos</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Título</th>
+                    <th>Precio</th>
+                    <th>Autor</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="product-list">
+                <!-- Aquí se cargarán los productos dinámicamente -->
+            </tbody>
+        </table>
+        </div>
 
     <!--Footer-->
     <footer>
@@ -84,5 +68,5 @@
     </footer>
     
 </body>
-<script src="./scripts/edit-product.js"></script>
+<script src="./scripts/table-products.js"></script>
 </html>

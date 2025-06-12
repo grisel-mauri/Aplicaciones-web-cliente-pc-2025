@@ -39,8 +39,6 @@ const getProducts = async () => {
         autor: item.fields.autor,
         price: item.fields.price,
         salePrice: item.fields.salePrice,
-        description: item.fields.description,
-        gender: item.fields.gender
         };
     })
     console.log(productsMaped);
@@ -70,12 +68,6 @@ function createProductCard(product) {
     const price=document.createElement('p');
     price.textContent=`$${product.price}`;
 
-    const description = document.createElement('p');
-    description.textContent = product.description;
-
-    const gender = document.createElement('p');
-    gender.textContent = product.gender;
-
     const button=document.createElement('button');
     button.textContent='Agregar al carrito';
     button.addEventListener('click', () => {
@@ -92,8 +84,6 @@ function createProductCard(product) {
     card.appendChild(title);
     card.appendChild(autor);
     card.appendChild(price);
-    card.appendChild(description);
-    card.appendChild(gender);
     card.appendChild(button);
 
     return card;
