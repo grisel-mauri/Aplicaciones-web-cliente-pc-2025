@@ -28,6 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .catch(error => console.error('Error cargando producto:', error));
     }
+
 });
 
 function updateSubmit(event){

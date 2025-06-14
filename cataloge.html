@@ -33,17 +33,16 @@
     <div class="container" id="cataloge">
         <aside>
             <h2>Filtros</h2>
-            <label><input id="sale-price" type="checkbox">Ofertas</label>
             <div class="category">
                 <h4>Categorias</h4>
                 <ul>
-                    <li><input type="checkbox">Ficción</li>    
-                    <li><input type="checkbox">No Ficción</li>
-                    <li><input type="checkbox">Fantasía</li>       
-                    <li><input type="checkbox">Ciencia Ficción</li>
-                    <li><input type="checkbox">Historia</li>
-                    <li><input type="checkbox">Biografía</li>
-                    <li><input type="checkbox">Poesía</li>
+                    <li><input type="checkbox" value="ficcion">Ficción</li>    
+                    <li><input type="checkbox" value="no ficcion">No Ficción</li>
+                    <li><input type="checkbox" value="fantasia">Fantasía</li>       
+                    <li><input type="checkbox" value="ciencia ficcion">Ciencia Ficción</li>
+                    <li><input type="checkbox" value="historia">Historia</li>
+                    <li><input type="checkbox" value="biografia">Biografía</li>
+                    <li><input type="checkbox" value="poesia">Poesía</li>
                 </ul>
             </div>
             <form>
@@ -63,7 +62,6 @@
             <div class="order-by">
                 <h4>Ordenar por</h4>
                 <select id="order-by" name="order-by">
-                    <option value="top-selling">Más vendidos</option>
                     <option value="price-asc">Precio: menor a mayor</option>
                     <option value="price-desc">Precio: mayor a menor</option>
                     <option value="a-z">A-Z</option>

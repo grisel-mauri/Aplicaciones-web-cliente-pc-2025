@@ -3,7 +3,7 @@ const BASE_ID= 'appefYnUgC93kCHAG';
 const TABLE_NAME = 'products';
 const API_URL = `https://api.airtable.com/v0/${BASE_ID}/${TABLE_NAME}`;
 
-const products = [];
+let products = [];
 const cartProducts = JSON.parse(localStorage.getItem('cart')) || [];
 
 const addToAirtable = async (product) => {
@@ -34,22 +34,28 @@ const getProducts = async () => {
     
     const productsMaped = data.records.map(item => {
         return {
+        id: item.id,
         image: item.fields.image,
         title: item.fields.title,
         autor: item.fields.autor,
         price: item.fields.price,
-        salePrice: item.fields.salePrice,
+        gender: item.fields.gender,
         };
     })
+    products = productsMaped;
     console.log(productsMaped);
-    renderProducts(productsMaped);
+    filterProducts ();
 }
-
-getProducts();
 
 const grid=document.querySelector('.product-grid');
 const searchInput = document.querySelector('#input-search-products');
 const salePrice = document.querySelector('#sale-price');
+const categoryCheckboxes = document.querySelectorAll('.category input[type="checkbox"]'); // Esta línea es crucial
+const minPriceInput = document.querySelector('.price-range input[type="number"]:first-of-type');
+const maxPriceInput = document.querySelector('.price-range input[type="number"]:last-of-type');
+const priceApplyButton = document.querySelector('.price-range button[type="submit"]');
+const orderBySelect = document.querySelector('#order-by');
+
 
 function createProductCard(product) {
     const card = document.createElement('article');
@@ -68,6 +74,9 @@ function createProductCard(product) {
     const price=document.createElement('p');
     price.textContent=`$${product.price}`;
 
+    const gender=document.createElement('p');
+    gender.textContent=product.gender;
+
     const button=document.createElement('button');
     button.textContent='Agregar al carrito';
     button.addEventListener('click', () => {
@@ -84,12 +93,14 @@ function createProductCard(product) {
     card.appendChild(title);
     card.appendChild(autor);
     card.appendChild(price);
+    card.appendChild(gender);
     card.appendChild(button);
 
     return card;
 }
 
 function renderProducts(list) {
+    grid.innerHTML = '';
     list.forEach(product => {
     const card = createProductCard(product);
     grid.appendChild(card);
@@ -98,18 +109,69 @@ function renderProducts(list) {
 
 
 // filtro de busqueda
-function filterProducts(text) {
-    const filteredProducts = products.filter(product => {
-        return (
-            product.title.toLowerCase().includes(text.toLowerCase()) ||
-            product.autor.toLowerCase().includes(text.toLowerCase())
+
+function filterProducts() {
+    let filtered = [...products];
+    //por autor o titulo
+    const searchTerm = searchInput.value.trim().toLowerCase();
+    if (searchTerm) {
+        filtered = filtered.filter(product =>
+            product.title.toLowerCase().includes(searchTerm) ||
+            product.autor.toLowerCase().includes(searchTerm)
         );
-    });
-    grid.innerHTML = '';
-    renderProducts(filteredProducts);
+    }
+    //por genero
+    const selectedCategories = Array.from(categoryCheckboxes)
+                                    .filter(checkbox => checkbox.checked)
+                                    .map(checkbox => checkbox.value.toLowerCase());
+    
+    if (selectedCategories.length > 0) {
+        filtered = filtered.filter(product => selectedCategories.includes(product.gender.toLowerCase()));
+    }
+    //por precio
+    const minPrice = parseFloat(minPriceInput.value);
+    const maxPrice = parseFloat(maxPriceInput.value);
+
+    if (!isNaN(minPrice)) {
+        filtered = filtered.filter(product => product.price >= minPrice);
+    }
+    if (!isNaN(maxPrice)) {
+        filtered = filtered.filter(product => product.price <= maxPrice);
+    }
+    //ordenar productos
+    const orderBy = orderBySelect.value;
+    switch (orderBy) {
+        case 'price-asc':
+            filtered.sort((a, b) => a.price - b.price);
+            break;
+        case 'price-desc':
+            filtered.sort((a, b) => b.price - a.price);
+            break;
+        case 'a-z':
+            filtered.sort((a, b) => a.title.localeCompare(b.title));
+            break;
+        case 'z-a':
+            filtered.sort((a, b) => b.title.localeCompare(a.title));
+            break;
+    }
+    renderProducts(filtered);
     } 
-searchInput.addEventListener('input', (e) => {
-filterProducts(e.target.value);
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    getProducts();
+    if (searchInput) searchInput.addEventListener('input', filterProducts);
+    if (categoryCheckboxes.length > 0) {
+        categoryCheckboxes.forEach(checkbox => checkbox.addEventListener('change', filterProducts));
+    }
+    // El botón "Aplicar" en el rango de precios
+    if (priceApplyButton) {
+        priceApplyButton.addEventListener('click', (e) => {
+            e.preventDefault(); // Evita que la página se recargue al enviar el formulario
+            filterProducts();
+        });
+    }
+    if (orderBySelect) orderBySelect.addEventListener('change', filterProducts);
 });
 
 
@@ -127,8 +189,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }); 
     });
 });
-
-renderProducts(products);
 
 
 // boton newsletter
