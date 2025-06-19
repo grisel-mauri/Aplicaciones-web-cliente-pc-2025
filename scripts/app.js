@@ -50,7 +50,7 @@ const getProducts = async () => {
 const grid=document.querySelector('.product-grid');
 const searchInput = document.querySelector('#input-search-products');
 const salePrice = document.querySelector('#sale-price');
-const categoryCheckboxes = document.querySelectorAll('.category input[type="checkbox"]'); // Esta línea es crucial
+const categoryCheckboxes = document.querySelectorAll('.category input[type="checkbox"]'); 
 const minPriceInput = document.querySelector('.price-range input[type="number"]:first-of-type');
 const maxPriceInput = document.querySelector('.price-range input[type="number"]:last-of-type');
 const priceApplyButton = document.querySelector('.price-range button[type="submit"]');
@@ -60,6 +60,10 @@ const orderBySelect = document.querySelector('#order-by');
 function createProductCard(product) {
     const card = document.createElement('article');
     card.classList.add('product-card');
+
+    card.addEventListener('click', () => {
+        window.location.href = `./product-description.html?id=${product.id}`;
+    });
 
     const image=document.createElement('img');
     image.src=product.image;  
