@@ -5,26 +5,26 @@ const API_URL = `https://api.airtable.com/v0/${BASE_ID}/${TABLE_NAME}`;
 
 function createDescription(product) {
     const detail = document.createElement('article');
-    detail.classList.add('product-card');
+    detail.classList.add('product-description');
 
-    const image=document.createElement('img');
-    image.src = product.image;
-    image.alt = product.title;
+    const bookDetails = document.createElement('article');
+    bookDetails.classList.add('book-details');
 
     const title=document.createElement('p');
+    title.classList.add('book-title');
     title.textContent = product.title;
 
     const autor=document.createElement('p');
+    autor.classList.add('book-autor');
     autor.textContent = product.autor;
 
-    const price=document.createElement('p');
-    price.textContent =`$${product.price}`;
-
-    const sinopsis=document.createElement('p');
-    sinopsis.textContent = product.sinopsis;
-
     const gender=document.createElement('p');
+    gender.classList.add('book-gender');
     gender.textContent = product.gender;
+
+    const price=document.createElement('p');
+    price.classList.add('book-price');
+    price.textContent =`$${product.price}`;
 
     const addToCartButton = document.createElement('button');
     addToCartButton.textContent = 'Agregar al carrito';
@@ -37,13 +37,33 @@ function createDescription(product) {
         }
     });
 
-    detail.appendChild(image);
-    detail.appendChild(title);
-    detail.appendChild(autor);
-    detail.appendChild(price);
-    detail.appendChild(sinopsis);
-    detail.appendChild(gender);
-    detail.appendChild(addToCartButton);
+    bookDetails.appendChild(title);
+    bookDetails.appendChild(autor);
+    bookDetails.appendChild(gender);
+    bookDetails.appendChild(price);
+    bookDetails.appendChild(addToCartButton);
+
+    const bookSinopsis = document.createElement('article');
+    bookSinopsis.classList.add('sinopsis');
+
+    const sinopsis = document.createElement('p');
+    sinopsis.classList.add('book-sinopsis');
+    sinopsis.textContent = product.sinopsis;
+
+    bookSinopsis.appendChild(sinopsis);
+
+    const bookImage = document.createElement('article');
+    bookImage.classList.add('book-image');
+
+    const image=document.createElement('img');
+    image.src = product.image;
+    image.alt = product.title;
+
+    bookImage.appendChild(image);
+
+    detail.appendChild(bookDetails);
+    detail.appendChild(bookSinopsis);
+    detail.appendChild(bookImage);
 
     return detail;
 }
@@ -85,4 +105,13 @@ document.addEventListener('DOMContentLoaded', async () => {
             productDescription.innerHTML = '<p>Hubo un error al cargar los detalles del producto.</p>';
         }
     }
+});
+
+
+// boton newsletter
+const newsletterbutton = document.querySelector('#btn-newsletter');
+const messageNews = document.getElementById('messageNews');
+newsletterbutton.addEventListener('click', () => {
+    event.preventDefault(); //para que no recargue la página al hacer click
+    messageNews.textContent = ('Gracias por suscribirte a nuestro newsletter!');
 });

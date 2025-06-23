@@ -9,7 +9,7 @@
 </head>
 <body>
     <header>
-        <img src= "./images/logo-boek.png" alt="Boek Libros">
+        <a href="./index.html"><img src= "./images/logo-boek.png" alt="Boek Libros"></a>
         <nav>
             <ul class="header-nav">
                 <li><a href="./index.html">Inicio</a></li>
@@ -32,20 +32,21 @@
     <!--Carrito-->
     <div class="cart-details">
         <form class="cart-form">
-            <h2>Datos de contacto</h2>
+            <h2>Datos de envio</h2>
             <label for="name">Nombre:</label>
             <input type="text" id="name" name="name" placeholder="Maria Perez..." required>
 
             <label for="email">Email:</label>
             <div class="checkbox-email">
                 <input type="email" id="email" name="email" placeholder="mariaperez@..." required><br>
-                <input type="checkbox">Quiero recibir novedades y ofertas exclusivas</input>
+                <input type="checkbox" id="subscription">Quiero recibir novedades y ofertas exclusivas</input>
             </div>
 
             <label for="address">Dirección:</label>
             <input type="text" id="address" name="address" placeholder="Dirección..." required>
 
             <button type="submit">Finalizar Compra</button>
+            <div id="messageSubmit"></div>
         </form>
         
         <section class="cart-grid">
@@ -54,7 +55,7 @@
                 <div class="cart-card"></div>
             </div>
             <div class="total-price">
-                <h4>Total: $<span id="total-amount">0</span></h4>
+                <h4>Total: $<span id="total-amount"></span></h4>
             </div>
         </section>
     

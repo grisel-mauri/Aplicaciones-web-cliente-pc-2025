@@ -1,5 +1,4 @@
 
-
 //home cambio de imagen
 document.addEventListener('DOMContentLoaded', () => {
     const mainImage = document.getElementById('mainImage');
@@ -15,26 +14,24 @@ document.addEventListener('DOMContentLoaded', () => {
     
 });
 
+// Filtro de búsqueda
 const searchInput = document.querySelector('#input-search-products');
-const searchButton = document.querySelector('.search-button'); // Usamos la clase del botón
+const searchButton = document.querySelector('.search-button');
 
 const performSearch = () => {
     const searchTerm = searchInput.value.trim();
     if (searchTerm) {
-        // Codifica el término de búsqueda para que sea seguro en una URL
-        const encodedSearchTerm = encodeURIComponent(searchTerm);
-        // Redirige al catálogo con el término de búsqueda como parámetro 'q'
-        window.location.href = `./cataloge.html?q=${encodedSearchTerm}`;
+        const encodedSearchTerm = encodeURIComponent(searchTerm); //transforma el término de búsqueda para que sea incrustado en la URL
+        window.location.href = `./cataloge.html?q=${encodedSearchTerm}`;// Redirige al catálogo con el término de búsqueda como parámetro 'q'
     } else {
-        // Si el campo de búsqueda está vacío, redirige al catálogo sin filtro
-        window.location.href = './cataloge.html';
+        window.location.href = './cataloge.html';// Si el campo de búsqueda está vacío, redirige al catálogo sin filtro
     }
 };
-
+//boton de búsqueda
 if (searchButton) {
     searchButton.addEventListener('click', performSearch);
 }
-
+//tecla enter para buscar
 if (searchInput) {
     searchInput.addEventListener('keypress', (event) => {
         if (event.key === 'Enter') {
@@ -42,15 +39,13 @@ if (searchInput) {
         }
     });
 }
-    // --- Fin de la lógica de búsqueda en el home ---
-
-
 
 // boton newsletter
 const newsletterbutton = document.querySelector('#btn-newsletter');
-
+const messageNews = document.getElementById('messageNews');
 newsletterbutton.addEventListener('click', () => {
-    alert ('Gracias por suscribirte a nuestro newsletter!');
+    event.preventDefault(); //para que no recargue la página al hacer click
+    messageNews.textContent = ('Gracias por suscribirte a nuestro newsletter!');
 });
 
 

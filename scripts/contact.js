@@ -10,7 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
         
 contactForm.addEventListener('submit', async function(event) {
     event.preventDefault(); // Evita el envío tradicional del formulario, no se recargue la página
-    responseMessage.textContent = 'Enviando mensaje...';
 
     try {
         const formData = new FormData(contactForm);
@@ -31,7 +30,7 @@ contactForm.addEventListener('submit', async function(event) {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${API_TOKEN}` // Aquí se envía el token directamente
+                'Authorization': `Bearer ${API_TOKEN}`
             },
             body: JSON.stringify(airtableData)
         });
@@ -39,19 +38,23 @@ contactForm.addEventListener('submit', async function(event) {
         const result = await response.json();
 
         if (response.ok) {
-            responseMessage.textContent = '¡Mensaje enviado con éxito a Airtable!';
-            responseMessage.style.color = 'green';
+            responseMessage.textContent = '¡Mensaje enviado con éxito!';
             contactForm.reset(); // Limpia el formulario después del éxito
         } else {
             console.error('Error de Airtable:', result);
-            // Muestra un mensaje de error más específico si Airtable lo proporciona
-            responseMessage.textContent = `Hubo un error al enviar el mensaje: ${result.error?.message || 'Error desconocido'}`;
-            responseMessage.style.color = 'red';
+            responseMessage.textContent = 'Hubo un error al enviar el mensaje';
         }
     } catch (error) {
         console.error('Error de red o al procesar la respuesta:', error);
         responseMessage.textContent = 'Error de conexión. Por favor, intenta de nuevo.';
-        responseMessage.style.color = 'red';
     }
   });
+});
+
+// boton newsletter
+const newsletterbutton = document.querySelector('#btn-newsletter');
+const messageNews = document.getElementById('messageNews');
+newsletterbutton.addEventListener('click', () => {
+    event.preventDefault(); //para que no recargue la página al hacer click
+    messageNews.textContent = ('Gracias por suscribirte a nuestro newsletter!');
 });

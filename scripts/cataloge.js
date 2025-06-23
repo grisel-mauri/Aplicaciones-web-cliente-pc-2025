@@ -6,6 +6,7 @@ const API_URL = `https://api.airtable.com/v0/${BASE_ID}/${TABLE_NAME}`;
 let products = [];
 const cartProducts = JSON.parse(localStorage.getItem('cart')) || [];
 
+//guardar productos en airtable
 const addToAirtable = async (product) => {
     const itemAirtable = {
         fields: product
@@ -20,7 +21,7 @@ const addToAirtable = async (product) => {
     }).then(data => console.log(data));
 }
 
-
+//obtener productos de airtable
 const getProducts = async () => {
     const response = await fetch(API_URL, {
         method: 'GET',
@@ -54,7 +55,7 @@ const maxPriceInput = document.querySelector('.price-range input[type="number"]:
 const priceApplyButton = document.querySelector('.price-range button[type="submit"]');
 const orderBySelect = document.querySelector('#order-by');
 
-
+//crear tarjeta de producto
 function createProductCard(product) {
     const card = document.createElement('article');
     card.classList.add('product-card');
@@ -74,6 +75,7 @@ function createProductCard(product) {
     autor.textContent=product.autor;
 
     const price=document.createElement('p');
+    price.classList.add('book-price');
     price.textContent=`$${product.price}`;
 
     const gender=document.createElement('p');
@@ -81,6 +83,7 @@ function createProductCard(product) {
 
     const button=document.createElement('button');
     button.textContent='Agregar al carrito';
+    const messageCart = document.createElement('span');
     button.addEventListener('click', (event) => {
         event.stopPropagation();
         const exists = cartProducts.find(item => item.title === product.title);
@@ -200,4 +203,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     if (orderBySelect) orderBySelect.addEventListener('change', filterProducts);
+});
+
+
+// boton newsletter
+const newsletterbutton = document.querySelector('#btn-newsletter');
+const messageNews = document.getElementById('messageNews');
+newsletterbutton.addEventListener('click', () => {
+    event.preventDefault(); //para que no recargue la página al hacer click
+    messageNews.textContent = ('Gracias por suscribirte a nuestro newsletter!');
 });

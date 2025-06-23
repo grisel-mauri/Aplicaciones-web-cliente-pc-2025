@@ -1,11 +1,13 @@
 @import url(https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap);
 :root {
-    --background-color: #f0f0f0;
-    --background-color2: #89dfc2;
-    --background-color3: #9cecd1;
-    --text-color: #333;
-    --text-color2: #730888;
-    --grey-color: #ccc;
+    --background-color: #F8F8F8;
+    --background-color2: #EBEBEB;
+    --background-color3: #4CAF50;
+    --text-color: #333333;
+    --text-color2: #2196F3;
+    --grey-color: #6A6A6A;
+    --text-orange: #FF9800;
+    --message-color: #FFC107;
 }
 * {
     box-sizing: border-box;
@@ -60,11 +62,11 @@ header {
     display: flex;
     width: 23rem;
     height: 2.5rem;
-    border: 1px solid var(--text-color2);
+    border: var(--background-color3) solid 1px;
     align-items: center;
     padding: 0.5rem;
     gap: 0.5rem;
-    background-color: var(--background-color3);
+    background-color: var(--background-color);
     input {
         width: 100%;
         height: 100%;
@@ -78,14 +80,15 @@ header {
     border: none;
     padding: 0.1rem;
     cursor: pointer;
-    color: var(--text-color2);  
+    color: var(--text-orange);  
     font-size: 0.8rem;
 }
-
 .cart-admin {
-    font-size: 1.5rem;
-    color: var (--text-color2) ;
-    padding: 1rem;
+    font-size: 1.5rem; 
+    a {
+        color: var(--text-orange);
+        padding: 1rem;
+    }
 }
 
 /*Home*/
@@ -96,7 +99,7 @@ header {
     grid-template-columns: 23% 57% 20%;
     grid-template-rows: 100%;
     height: 100vh;
-    padding-top: 9.3%;
+    padding-top: 9.8%;
     border: solid 1px var(--text-color);
 }
 
@@ -153,7 +156,8 @@ header {
     grid-template-rows: 4% 44% 4% 44% 4%;
     #news-title {
         border: solid 1px var(--text-color);
-        cursor: pointer;
+        background-color: var(--grey-color);
+        color: var(--background-color);
         grid-row-start: 1;
         h5 {
             height: 1rem;
@@ -212,6 +216,7 @@ aside input[type=checkbox] {
     height: 15px;
     border: solid 1px var(--text-color);
     margin-right: 0.5rem;
+    cursor: pointer;
 }
 .price-range {
     display: flex;
@@ -240,6 +245,7 @@ aside input[type=checkbox] {
         border: solid 1px var(--text-color2);
         background-color: inherit;
         height: 2rem;
+        cursor: pointer;
 }
 main{
     flex-grow: 1;
@@ -247,28 +253,36 @@ main{
 }
 .product-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(150px, 150px));
     gap: 20px;
     padding: 20px;
 }
 .product-card {
+    max-width: 200px;
     box-shadow: 10px 10px 20px rgba(62, 62, 62, 0.1);
     border-radius: 5px;
     padding: 0.5rem;
+    background-color: var(--background-color2);
+    transition: transform 0.3s ease-in-out;
+    &:hover {
+        transform: scale(1.05); 
+    }
+    cursor: pointer;
+    .book-price {
+        font-weight: bold;
+        color: var(--text-orange);
+    }
     
 }
 .product-card img {
     width: 100%;
     height: auto;
     border-radius: 5px;
-    transition: transform 0.3s ease-in-out;
-    &:hover {
-        transform: scale(1.05); 
-    }
+    
 }
 .product-card button {
-    background-color: var(--background-color2);
-    color: var(--text-color2);
+    background-color: var(--background-color3);
+    color: var(--background-color);
     border: none;
     padding: 0.5rem;
     cursor: pointer;
@@ -315,8 +329,8 @@ p {
         padding: 0.5rem;
     }
     button {
-        background-color: var(--background-color2);
-        color: var(--text-color2);
+        background-color: var(--background-color3);
+        color: var(--background-color);
         border: none;
         margin-top: 1rem;
         padding: 0.5rem;
@@ -335,48 +349,69 @@ p {
     grid-template-rows: 100%;
     padding:9.5rem 0 1rem 3rem;
     max-height: 100vh;
+}
     
 .book-details {
     grid-column-start: 1;
-    padding-left: 5rem;
-    line-height: 2rem;
+    line-height: 3rem;
+    border: var(--text-color2) solid 1px;
+    .book-title {
+        font-size: 2.5rem;
+        font-weight: bold;
+        background-color: var(--grey-color);
+        color: var(--background-color);
+        border: var(--text-color2) solid 1px;
+        padding-left: 1rem;
+        }
+    .book-autor {
+        font-size: 1rem;
+        padding-left: 2rem;
+        border: var(--text-color2) solid 1px;
+    }
+    .book-gender {
+    padding-left: 2rem;
+    border: var(--text-color2) solid 1px;
+    }
+    .book-price {
+        font-size: 1.5rem;
+        font-weight: bold;
+        padding-left: 2rem;
+        color: var(--text-orange);
+        border: var(--text-color2) solid 1px;
+    }
     button {
-        background-color: var(--background-color2);
-        color: var(--text-color2);
+        background-color: var(--background-color3);
+        color: var(--background-color);
         border: none;
         padding: 0.5rem;
-        margin: 1rem 0 2rem 0;
+        margin: 1rem 0 2rem 2rem;
         transition: transform 0.3s ease-in-out;
         &:hover {
         transform: scale(1.05); 
         cursor: pointer;
-        } 
-        
+        }   
     } 
 }
-.descrip {
-        display: flex;
-        flex-direction: row;
-}
-.descrip-bold {
-            font-weight: bold;
-        }
 
 .sinopsis {
     grid-column-start: 2;
     display: flex;
     flex-direction: column;
-    max-width: 15rem;
+    overflow-y: auto;
     line-height: 1.8rem;
+    border: var(--text-color2) solid 1px;
+    padding: 1rem;
+    .book-sinopsis {
+        font-size: 1rem;
+        max-width: 15rem;
+        align-self: center;
+    }
 }
 .book-image {
     grid-column-start: 3;
     display: flex;
-    justify-content: center;
-}
-.book-image img{ 
-    max-height: 100%;
-    justify-self: center;
+    img {
+        max-width: 100%;
     }
 }
 
@@ -555,7 +590,7 @@ footer {
     justify-content: center;
     gap: 1rem;
     padding: 2rem;
-    box-shadow: 10px 10px 20px rgba(62, 62, 62, 0.1); /*funciona?*/
+    box-shadow: 10px 10px 20px rgba(62, 62, 62, 0.1); 
     input {
         background-color: inherit;
         border: solid 1px var(--grey-color);
@@ -570,6 +605,9 @@ footer {
             cursor: pointer;
             text-decoration: underline;
             border-radius: 5px;
+        }
+        #messageNews {
+            color: var(--message-color);
         }
 }
 
@@ -651,3 +689,4 @@ footer {
         }
     }
 }
+

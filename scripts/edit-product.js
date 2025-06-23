@@ -92,3 +92,11 @@ function updateSubmit(event){
         alert('Error al actualizar el producto');
     });
 }
+
+// boton newsletter
+const newsletterbutton = document.querySelector('#btn-newsletter');
+const messageNews = document.getElementById('messageNews');
+newsletterbutton.addEventListener('click', () => {
+    event.preventDefault(); //para que no recargue la página al hacer click
+    messageNews.textContent = ('Gracias por suscribirte a nuestro newsletter!');
+});
