@@ -83,14 +83,15 @@ function createProductCard(product) {
 
     const button=document.createElement('button');
     button.textContent='Agregar al carrito';
-    const messageCart = document.createElement('span');
+    
+    const messageCart = document.getElementById('messageCart'); //no funciona
     button.addEventListener('click', (event) => {
         event.stopPropagation();
         const exists = cartProducts.find(item => item.title === product.title);
         if (!exists) {
             cartProducts.push(product);
             localStorage.setItem('cart', JSON.stringify(cartProducts));
-            console.log('Producto agregado al carrito');
+            messageCart.textContent = 'Agregado al carrito';
         }
 
     });
@@ -115,20 +116,16 @@ function renderProducts(list) {
 
 
 // filtro de busqueda
-
+// barra de busqueda
 const searchButton = document.querySelector('.search-button');
 if (searchButton) {
-    searchButton.addEventListener('click', performSearch);
+    searchButton.addEventListener('click', filterProducts);
 }
 searchInput.addEventListener('keypress', (event) => {
         if (event.key === 'Enter') {
-            performSearch();
+            filterProducts();
         }
     });
-
-function performSearch() {
-    filterProducts();
-}
 
 
 function filterProducts() {
@@ -141,7 +138,6 @@ function filterProducts() {
             product.autor.toLowerCase().includes(searchTerm)
         );
     }
-
     //por genero
     const selectedCategories = Array.from(categoryCheckboxes)
                                     .filter(checkbox => checkbox.checked)
@@ -178,7 +174,7 @@ function filterProducts() {
     }
     renderProducts(filtered);
 }
-
+// Filtrar productos al cargar la página
 document.addEventListener('DOMContentLoaded', () => {
     getProducts().then(() => {
         const urlParams = new URLSearchParams(window.location.search);
@@ -209,7 +205,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // boton newsletter
 const newsletterbutton = document.querySelector('#btn-newsletter');
 const messageNews = document.getElementById('messageNews');
-newsletterbutton.addEventListener('click', () => {
+newsletterbutton.addEventListener('click', (event) => {
     event.preventDefault(); //para que no recargue la página al hacer click
     messageNews.textContent = ('Gracias por suscribirte a nuestro newsletter!');
 });

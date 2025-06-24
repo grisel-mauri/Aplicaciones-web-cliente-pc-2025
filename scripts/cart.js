@@ -25,9 +25,10 @@ function createProductCartCard(product) {
     button.addEventListener('click', () => {
         const exists = cartProducts.findIndex(item => item.title === product.title);
         if (exists !== -1) {
-            cartProducts.splice(exists, 1);
-            localStorage.setItem('cart', JSON.stringify(cartProducts));
-            renderCartProducts(cartProducts);
+            cartProducts.splice(exists, 1);// Elimina el producto del carrito
+            localStorage.setItem('cart', JSON.stringify(cartProducts));// Actualiza el localStorage
+            renderCartProducts(cartProducts);// Vuelve a renderizar el carrito
+            updateTotalAmount(); // Actualiza el total después de eliminar un producto
         }
     });
 
@@ -65,7 +66,7 @@ const cartForm = document.querySelector('.cart-form');
 const messageSubmit = document.getElementById('messageSubmit');
 
 cartForm.addEventListener('submit', async (event) => {
-    event.preventDefault(); // Evita el envío predeterminado del formulario
+    event.preventDefault();
 
     const name = document.getElementById('name').value;
     const email = document.getElementById('email').value;
@@ -85,7 +86,7 @@ cartForm.addEventListener('submit', async (event) => {
             "productsInCart": productsInCart
         }
     };
-
+    //envio datos a Airtable
     try {
         console.log('Datos enviados a Airtable:', JSON.stringify(dataToSend, null, 2));
         const response = await fetch(`${API_URL}`, {
@@ -116,11 +117,37 @@ cartForm.addEventListener('submit', async (event) => {
     }
 });
 
+// Filtro de búsqueda
+const searchInput = document.querySelector('#input-search-products');
+const searchButton = document.querySelector('.search-button');
+
+const performSearch = () => {
+    const searchTerm = searchInput.value.trim();
+    if (searchTerm) {
+        const encodedSearchTerm = encodeURIComponent(searchTerm); //transforma el término de búsqueda para que sea incrustado en la URL
+        window.location.href = `./cataloge.html?q=${encodedSearchTerm}`;// Redirige al catálogo con el término de búsqueda como parámetro 'q'
+    } else {
+        window.location.href = './cataloge.html';// Si el campo de búsqueda está vacío, redirige al catálogo sin filtro
+    }
+};
+//boton de búsqueda
+if (searchButton) {
+    searchButton.addEventListener('click', performSearch);
+}
+//tecla enter para buscar
+if (searchInput) {
+    searchInput.addEventListener('keypress', (event) => {
+        if (event.key === 'Enter') {
+            performSearch();
+        }
+    });
+}
+
 
 // boton newsletter
 const newsletterbutton = document.querySelector('#btn-newsletter');
 const messageNews = document.getElementById('messageNews');
-newsletterbutton.addEventListener('click', () => {
+newsletterbutton.addEventListener('click', (event) => {
     event.preventDefault(); //para que no recargue la página al hacer click
     messageNews.textContent = ('Gracias por suscribirte a nuestro newsletter!');
 });

@@ -448,6 +448,9 @@ p {
         transform: scale(1.05); 
         }  
     }
+    #messageSubmit {
+        color: var(--message-color);
+    }
 .checkbox-email{
     line-height: 0.5rem;
 }   
@@ -572,6 +575,64 @@ p {
     td {
         border-bottom: 1px solid #e0e0e0;
         padding: 10px 10px;
+    }
+}
+
+/*Add product*/
+.add-product  {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-top: 9.5%;
+    h1{
+        padding: 1rem 0 0 5rem;
+    }
+    form {
+        display: flex;
+        flex-direction: column;
+        padding: 1rem 0 2rem 5rem;
+        line-height: 3rem;
+        max-height: 200vh;
+    }
+    input{
+        width: 20rem;
+        height: 2rem;
+        background-color: inherit;
+        border: solid 1px var(--text-color2);
+        padding: 0.5rem;
+    }
+    #save {
+        background-color: var(--background-color2);
+        color: var(--text-color2);
+        width: 20rem;
+        border: none;
+        padding: 0.5rem;
+        transition: transform 0.3s ease-in-out;
+        &:hover {
+        transform: scale(1.05); 
+        }
+    }
+    #product-gender {
+        width: 20rem;
+        height: 2rem;
+        border: solid 1px var(--text-color2);
+        background-color: inherit;
+        padding: 0.5rem;
+    }
+    textarea {
+        width: 20rem;
+        height: 7rem;
+        background-color: inherit;
+        border: solid 1px var(--text-color2);
+        padding: 0.5rem;
+    }
+    #product-image {
+        width: 30rem;
+        height: 2rem;
+        border: none;
+        padding: 0.5rem;
+        margin-bottom: 1rem;
+       
     }
 }
 

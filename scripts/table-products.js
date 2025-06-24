@@ -25,7 +25,30 @@ function createProductRow(product) {
         window.location.href = `./edit-product.html?id=${product.id}`;
     });
 
+    const deleteButton = document.createElement('button');
+    deleteButton.textContent = 'Eliminar';
+    deleteButton.addEventListener('click', async () => {
+        const productIdToDelete = product.id;
+        try {
+            const response = await fetch(`${API_URL}/${productIdToDelete}`, {
+                method: 'DELETE', 
+                headers: {
+                    'Authorization': `Bearer ${API_TOKEN}`
+                }
+            });
+            if (response.ok) {
+                row.remove(); // Elimina la fila de la tabla
+                console.log('Producto eliminado con éxito');
+            }
+        } catch (error) {
+            console.error('Error al eliminar el producto:', error);
+        }
+    });
+
+
+
     actions.appendChild(button);
+    actions.appendChild(deleteButton);
     row.appendChild(title);
     row.appendChild(price);
     row.appendChild(autor);
@@ -67,10 +90,36 @@ function renderProducts(list){
 
 getProducts();
 
+// Filtro de búsqueda
+const searchInput = document.querySelector('#input-search-products');
+const searchButton = document.querySelector('.search-button');
+
+const performSearch = () => {
+    const searchTerm = searchInput.value.trim();
+    if (searchTerm) {
+        const encodedSearchTerm = encodeURIComponent(searchTerm); //transforma el término de búsqueda para que sea incrustado en la URL
+        window.location.href = `./cataloge.html?q=${encodedSearchTerm}`;// Redirige al catálogo con el término de búsqueda como parámetro 'q'
+    } else {
+        window.location.href = './cataloge.html';// Si el campo de búsqueda está vacío, redirige al catálogo sin filtro
+    }
+};
+//boton de búsqueda
+if (searchButton) {
+    searchButton.addEventListener('click', performSearch);
+}
+//tecla enter para buscar
+if (searchInput) {
+    searchInput.addEventListener('keypress', (event) => {
+        if (event.key === 'Enter') {
+            performSearch();
+        }
+    });
+}
+
 // boton newsletter
 const newsletterbutton = document.querySelector('#btn-newsletter');
 const messageNews = document.getElementById('messageNews');
-newsletterbutton.addEventListener('click', () => {
+newsletterbutton.addEventListener('click', (event) => {
     event.preventDefault(); //para que no recargue la página al hacer click
     messageNews.textContent = ('Gracias por suscribirte a nuestro newsletter!');
 });

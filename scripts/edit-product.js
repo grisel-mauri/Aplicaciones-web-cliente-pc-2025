@@ -81,7 +81,7 @@ function updateSubmit(event){
     .then(data => {
         if(data.error) {
             console.error('Error detallado:', data);
-            alert(`Error al actualizar (${data.error.type}): ${data.error.message}`);
+            alert('Error al actualizar');
         } else {
             alert('Producto actualizado correctamente');
             window.location.href = './table-products.html';
@@ -90,6 +90,32 @@ function updateSubmit(event){
     .catch(error => {
         console.error('Error:', error);
         alert('Error al actualizar el producto');
+    });
+}
+
+// Filtro de búsqueda
+const searchInput = document.querySelector('#input-search-products');
+const searchButton = document.querySelector('.search-button');
+
+const performSearch = () => {
+    const searchTerm = searchInput.value.trim();
+    if (searchTerm) {
+        const encodedSearchTerm = encodeURIComponent(searchTerm); //transforma el término de búsqueda para que sea incrustado en la URL
+        window.location.href = `./cataloge.html?q=${encodedSearchTerm}`;// Redirige al catálogo con el término de búsqueda como parámetro 'q'
+    } else {
+        window.location.href = './cataloge.html';// Si el campo de búsqueda está vacío, redirige al catálogo sin filtro
+    }
+};
+//boton de búsqueda
+if (searchButton) {
+    searchButton.addEventListener('click', performSearch);
+}
+//tecla enter para buscar
+if (searchInput) {
+    searchInput.addEventListener('keypress', (event) => {
+        if (event.key === 'Enter') {
+            performSearch();
+        }
     });
 }
 
