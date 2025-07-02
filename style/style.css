@@ -57,6 +57,12 @@ header {
         color: var(--text-color2);
     }    
 }
+.hamburger-menu {
+    display: none;
+}
+.close-menu {
+    display: none;
+}
 
 .search-bar {
     display: flex;
@@ -294,6 +300,9 @@ main{
 p {
     font-size:0.8rem;
 }
+.message-cart {
+    color: var(--text-color2);
+}
 
 
 /*Contacto*/
@@ -437,8 +446,8 @@ p {
         margin-bottom: 1rem;
     }
     button {
-        background-color: var(--background-color2);
-        color: var(--text-color2);
+        background-color: var(--background-color3);
+        color: var(--background-color);
         width: 7rem;
         border: none;
         margin-top: 1rem;
@@ -446,7 +455,8 @@ p {
         transition: transform 0.3s ease-in-out;
         &:hover {
         transform: scale(1.05); 
-        }  
+        }
+        cursor: pointer;
     }
     #messageSubmit {
         color: var(--message-color);
@@ -466,6 +476,8 @@ p {
     overflow-y: auto;
 }
 .cart-card {
+    display: flex;
+    flex-direction: column;
     border-radius: 5px;
     padding: 0.5rem;
     box-shadow: 10px 10px 20px rgba(62, 62, 62, 0.1);
@@ -473,6 +485,7 @@ p {
         width: 20%;
     }
     button {
+        align-self: flex-end;
         width: 5rem;
         height: 2rem;
         background-color: var(--background-color2);
@@ -484,9 +497,18 @@ p {
         }
     }
 }
+.cart-product-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0.8rem;
+    
+    }
 .total-price {
     padding: 0.8rem;
     font-weight: bold;
+    background-color: var(--background-color3);
+    color: var(--background-color);
 }
 
 /*Edit product*/
@@ -557,8 +579,8 @@ p {
         padding: 0.3rem;
     }
     th {
-        background-color: var(--grey-color);
-        color: var(--text-color2);
+        background-color: var(--background-color3);
+        color: var(--background-color);
         padding: 0.3rem;
         text-align: left;
     }
@@ -576,6 +598,10 @@ p {
         border-bottom: 1px solid #e0e0e0;
         padding: 10px 10px;
     }
+}
+.edit-button {
+    background-color: var(--background-color3);
+    color: var(--background-color)
 }
 
 /*Add product*/
@@ -698,24 +724,61 @@ footer {
 @media (max-width: 430px) {
 
     header {
+        height: 7rem;
+        display: flex;
         flex-direction: column;
-        padding: 1rem;
-        img {
-            width: 15rem;
+        padding: 0;
+        width: 100%;
+    }
+    #small-menu {
+        display: flex;
+        flex-direction: row;
+        padding: 1rem 2rem;
+        justify-content: space-between;
+        width: 100%;
+        #hamburger-menu {
+            border: none;
+            font-size: 2rem;
+            background-color: transparent;
         }
     }
+    #navbar {
+        opacity: 0;
+        visibility: hidden;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        background-color: var(--background-color);
+        align-items: center;  
+    }
+    #navbar.visible {
+        opacity: 1;
+        visibility: visible;
+    }
     .header-nav {
-        flex-direction: row;
-        padding: 0.5rem;
-        gap:0.4rem
+        flex-direction: column;
+        font-size: 1.5rem;
+        gap: 0;
+        width: 100%;
+        padding: 0;
+        li { 
+            border: var(--text-color2) solid 1px;
+            padding: 1rem;
+            text-align: center;
+        }
     }
     .search-bar {
-        width: 80%;
+        width: 95%;
         padding: 0.5rem;
+        margin: 1rem;
     }
+    .cart-admin {
+        padding: 1rem;
+        font-size: 2rem;
+    }
+
     .container {
         flex-direction: column;
-        padding-top: 290%;
     }
     aside {
         width: 100%;
@@ -726,18 +789,19 @@ footer {
     }
     footer {
         width: 100%;
-        height: 5%;
+        height: auto;
         flex-direction: column;
         padding: 0.5rem;
     }
     .newsletter {
-        flex-direction: column;
-        align-items: center;
+        display: none;
+    }
+    .social-media {
+        padding: 0.5rem;;
     }
     .home-section {
         display: flex;
         flex-direction: column;
-        padding-top: 40%;
     }
     #product-grid-home {
         flex-direction: column;
@@ -749,5 +813,28 @@ footer {
             width: 20rem;
         }
     }
+    .cart-details{
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        padding: 2rem 1rem;
+        max-height: none;
+    }
+    .cart-form {
+        grid-column-start: auto;
+        height: 150%;
+        margin-bottom: 2rem;
+        button {
+            width: 100%;
+            height: 4rem;
+        }
+    }
+    .cart-grid {
+        grid-column-start: auto;
+    }
+
 }
+
+/*@media (max-width: 768px) {
+
+})*/
 
