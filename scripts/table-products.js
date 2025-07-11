@@ -21,12 +21,14 @@ function createProductRow(product) {
    
     const button = document.createElement('button');
     button.textContent = 'Modificar';
+    button.classList.add('edit-button');
     button.addEventListener('click', () => {
         window.location.href = `./edit-product.html?id=${product.id}`;
     });
 
     const deleteButton = document.createElement('button');
     deleteButton.textContent = 'Eliminar';
+    deleteButton.classList.add('delete-button');
     deleteButton.addEventListener('click', async () => {
         const productIdToDelete = product.id;
         try {
@@ -89,6 +91,13 @@ function renderProducts(list){
 }
 
 getProducts();
+
+//hamburger menu
+const hamburgerButton = document.getElementById('hamburger-menu');
+const navBar = document.getElementById('navbar'); 
+hamburgerButton.addEventListener('click', () => {
+    navBar.classList.toggle('visible'); 
+});
 
 // Filtro de búsqueda
 const searchInput = document.querySelector('#input-search-products');

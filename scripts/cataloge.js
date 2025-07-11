@@ -83,15 +83,21 @@ function createProductCard(product) {
 
     const button=document.createElement('button');
     button.textContent='Agregar al carrito';
+
+    const messageCart = document.createElement('p');
+    messageCart.classList.add('message-cart');
+    messageCart.textContent = ''; // Inicialmente vacío
     
-    const messageCart = document.getElementById('messageCart'); //no funciona
     button.addEventListener('click', (event) => {
         event.stopPropagation();
         const exists = cartProducts.find(item => item.title === product.title);
         if (!exists) {
             cartProducts.push(product);
             localStorage.setItem('cart', JSON.stringify(cartProducts));
-            messageCart.textContent = 'Agregado al carrito';
+            messageCart.textContent = '¡Agregado al carrito!';
+        }
+        else {
+            messageCart.textContent = 'El producto ya está en el carrito';
         }
 
     });
@@ -102,6 +108,7 @@ function createProductCard(product) {
     card.appendChild(price);
     card.appendChild(gender);
     card.appendChild(button);
+    card.appendChild(messageCart);
 
     return card;
 }
@@ -114,6 +121,19 @@ function renderProducts(list) {
 });
 }
 
+//hamburger menu
+const hamburgerButton = document.getElementById('hamburger-menu');
+const navBar = document.getElementById('navbar'); 
+hamburgerButton.addEventListener('click', () => {
+    navBar.classList.toggle('visible'); 
+});
+
+//filtro de categorias
+const filterHamburger = document.getElementById('filter-hamburger');
+const aside = document.querySelector('aside');
+filterHamburger.addEventListener('click', () => {
+    aside.classList.toggle('visible'); 
+});
 
 // filtro de busqueda
 // barra de busqueda

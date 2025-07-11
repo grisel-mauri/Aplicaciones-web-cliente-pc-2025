@@ -93,6 +93,13 @@ function updateSubmit(event){
     });
 }
 
+//hamburger menu
+const hamburgerButton = document.getElementById('hamburger-menu');
+const navBar = document.getElementById('navbar'); 
+hamburgerButton.addEventListener('click', () => {
+    navBar.classList.toggle('visible'); 
+});
+
 // Filtro de búsqueda
 const searchInput = document.querySelector('#input-search-products');
 const searchButton = document.querySelector('.search-button');

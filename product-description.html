@@ -9,30 +9,31 @@
 </head>
 <body>
     <header>
-        <a href="./index.html"><img src= "./images/logo-boek.png" alt="Boek Libros"></a>
-        <nav>
-            <ul class="header-nav">
-                <li><a href="./index.html">Inicio</a></li>
-                <li ><a href="./cataloge.html">Catálogo</a></li>
-                <li><a href="./contact.html">Contacto</a></li>
-            </ul>
+        <nav id="small-menu">
+            <a href="./index.html"><img src= "./images/logo-boek.png" alt="Boek Libros"></a>
+            <button id="hamburger-menu"><i class="fas fa-bars"></i></button>
         </nav>
-        <nav class="search-bar">
-            <input id="input-search-products" type="text" placeholder="Buscar...">
-            <button type="submit" class="search-button">
-                <i class="fas fa-search"></i>
-            </button>
-        </nav>
-        <nav class="cart-admin">
-            <a href="./cart.html"><i class="fas fa-shopping-cart"></i></a>
-            <a href="./table-products.html"><i class="fas fa-user"></i></a>
+        <nav id="navbar">
+                <ul class="header-nav" id="main-nav">
+                    <li><a href="./index.html">Inicio</a></li>
+                    <li ><a href="./cataloge.html">Catálogo</a></li>
+                    <li><a href="./contact.html">Contacto</a></li>
+                </ul>
+            <nav class="search-bar">
+                <input id="input-search-products" type="text" placeholder="Buscar...">
+                <button type="submit" class="search-button">
+                    <i class="fas fa-search"></i>
+                </button>
+            </nav>
+            <nav class="cart-admin">
+                <a href="./cart.html"><i class="fas fa-shopping-cart"></i></a>
+                <a href="./table-products.html"><i class="fas fa-user"></i></a>
+            </nav>
         </nav>
     </header>
 
     <!--Product Description-->
     <div id="product-description"></div>
-
-
 
     <!--Footer-->
     <footer>

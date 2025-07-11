@@ -32,10 +32,15 @@ function createProductCartCard(product) {
         }
     });
 
+    const cartProductDetails = document.createElement('div');
+    cartProductDetails.classList.add('cart-product-details');
+
+    cartProductDetails.appendChild(title);
+    cartProductDetails.appendChild(price);
+    cartProductDetails.appendChild(button);
+
     card.appendChild(image);
-    card.appendChild(title);
-    card.appendChild(price);
-    card.appendChild(button);
+    card.appendChild(cartProductDetails);
 
     return card;
 }
@@ -115,6 +120,13 @@ cartForm.addEventListener('submit', async (event) => {
         console.error('Error de red o al enviar la solicitud:', error);
         messageSubmit.textContent = 'Hubo un problema de conexión. Por favor, verifica tu internet o inténtalo más tarde.';
     }
+});
+
+//hamburger menu
+const hamburgerButton = document.getElementById('hamburger-menu');
+const navBar = document.getElementById('navbar'); 
+hamburgerButton.addEventListener('click', () => {
+    navBar.classList.toggle('visible'); 
 });
 
 // Filtro de búsqueda
