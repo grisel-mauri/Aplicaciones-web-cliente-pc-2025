@@ -6,23 +6,28 @@ const API_URL = `https://api.airtable.com/v0/${BASE_ID}/${TABLE_NAME}`;
 let products = [];
 const cartProducts = JSON.parse(localStorage.getItem('cart')) || [];
 
-//guardar productos en airtable
+//crear productos en airtable
 const addToAirtable = async (product) => {
     const itemAirtable = {
         fields: product
     };
-    fetch (API_URL, {
-        method: 'POST',
-        headers: {
-            Authorization: `Bearer ${API_TOKEN}`,
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(itemAirtable)
-    }).then(data => console.log(data));
-}
+    try {
+    const response = await fetch(API_URL, {
+    method: 'POST',
+    headers: {
+        Authorization: `Bearer ${API_TOKEN}`,
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(itemAirtable)
+    });
+} catch (error) {
+    console.error('Error al agregar producto a Airtable:', error);
+    }
+};
 
 //obtener productos de airtable
 const getProducts = async () => {
+    try {
     const response = await fetch(API_URL, {
         method: 'GET',
         headers: {
@@ -45,7 +50,11 @@ const getProducts = async () => {
     })
     products = productsMaped;
     console.log(productsMaped);
-}
+    } catch (error) {
+        console.error('Error al obtener productos de Airtable:', error);
+        }
+};
+
 
 const grid=document.querySelector('.product-grid');
 const searchInput = document.querySelector('#input-search-products');
@@ -58,7 +67,7 @@ const orderBySelect = document.querySelector('#order-by');
 //crear tarjeta de producto
 function createProductCard(product) {
     const card = document.createElement('article');
-    card.classList.add('product-card');
+    card.classList.add('product-card');//añade la clase para css
 
     card.addEventListener('click', () => {
         window.location.href = `./product-description.html?id=${product.id}`;
@@ -80,7 +89,7 @@ function createProductCard(product) {
 
     const gender=document.createElement('p');
     gender.textContent=product.gender;
-
+    //agregar al carrito
     const button=document.createElement('button');
     button.textContent='Agregar al carrito';
 
@@ -89,10 +98,10 @@ function createProductCard(product) {
     messageCart.textContent = ''; // Inicialmente vacío
     
     button.addEventListener('click', (event) => {
-        event.stopPropagation();
-        const exists = cartProducts.find(item => item.title === product.title);
+        event.stopPropagation();//para que no redirija a la descripcion del producto
+        const exists = cartProducts.find(item => item.title === product.title);//busca el producto
         if (!exists) {
-            cartProducts.push(product);
+            cartProducts.push(product);//si no existe, lo agrega
             localStorage.setItem('cart', JSON.stringify(cartProducts));
             messageCart.textContent = '¡Agregado al carrito!';
         }
@@ -128,7 +137,7 @@ hamburgerButton.addEventListener('click', () => {
     navBar.classList.toggle('visible'); 
 });
 
-//filtro de categorias
+//hamburger filtro de categorias
 const filterHamburger = document.getElementById('filter-hamburger');
 const aside = document.querySelector('aside');
 filterHamburger.addEventListener('click', () => {
@@ -138,9 +147,8 @@ filterHamburger.addEventListener('click', () => {
 // filtro de busqueda
 // barra de busqueda
 const searchButton = document.querySelector('.search-button');
-if (searchButton) {
-    searchButton.addEventListener('click', filterProducts);
-}
+searchButton.addEventListener('click', filterProducts);
+
 searchInput.addEventListener('keypress', (event) => {
         if (event.key === 'Enter') {
             filterProducts();
@@ -159,7 +167,7 @@ function filterProducts() {
         );
     }
     //por genero
-    const selectedCategories = Array.from(categoryCheckboxes)
+    const selectedCategories = Array.from(categoryCheckboxes) //convierte NodeList a array
                                     .filter(checkbox => checkbox.checked)
                                     .map(checkbox => checkbox.value.toLowerCase());
     

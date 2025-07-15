@@ -60,6 +60,7 @@ function createProductRow(product) {
 }
 const products = [];
 const getProducts = async () => {
+    try {
     const response = await fetch(API_URL, {
         method: 'GET',
         headers:{
@@ -81,7 +82,10 @@ const getProducts = async () => {
     console.log(productsMaped);
 
     renderProducts(productsMaped);
-}
+    } catch (error) { 
+        console.error('Error al obtener o procesar los productos:', error);
+    }
+};
 
 function renderProducts(list){
     list.forEach( product => {
@@ -121,7 +125,7 @@ if (searchInput) {
     searchInput.addEventListener('keypress', (event) => {
         if (event.key === 'Enter') {
             performSearch();
-        }
+        }
     });
 }
 

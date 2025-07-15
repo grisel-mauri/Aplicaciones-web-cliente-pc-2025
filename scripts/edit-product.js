@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const productId = urlParams.get('id');
     
     if(productId) {
-        fetch(`${API_URL}/${productId}`, {
+        fetch(`${API_URL}/${productId}`, { //por defecto, GET
             headers: {
                 'Authorization': `Bearer ${API_TOKEN}`
             }
@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(response => response.json())
         .then(data => {
             if(!data.error) {
-                document.querySelector('#product-title').value = data.fields.title || '';
+                document.querySelector('#product-title').value = data.fields.title || ''; //o vacio si no existe
                 document.querySelector('#product-price').value = data.fields.price || '';
                 document.querySelector('#product-gender').value = data.fields.gender || '';
                 document.querySelector('#product-autor').value = data.fields.autor || '';
@@ -70,7 +70,7 @@ function updateSubmit(event){
     };
 
     fetch(`${API_URL}/${productId}`, {
-        method: 'PATCH',
+        method: 'PATCH', // Actualizar producto
         headers:{
             'Authorization': `Bearer ${API_TOKEN}`,
             'Content-Type': 'application/json'

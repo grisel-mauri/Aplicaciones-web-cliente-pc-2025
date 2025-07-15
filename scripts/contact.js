@@ -9,13 +9,12 @@ document.addEventListener('DOMContentLoaded', () => {
         
         
 contactForm.addEventListener('submit', async function(event) {
-    event.preventDefault(); // Evita el envío tradicional del formulario, no se recargue la página
-
+    event.preventDefault(); 
     try {
         const formData = new FormData(contactForm);
-        const data = {};
+        const data = {};//objeto vacio para almacenar los datos
         formData.forEach((value, key) => {
-            data[key] = value; 
+            data[key] = value; //key nombre del campo, value valor del campo
         });
         const airtableData = { records: [{
             fields: {

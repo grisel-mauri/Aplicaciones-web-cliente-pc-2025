@@ -21,15 +21,12 @@ hamburgerButton.addEventListener('click', () => {
     navBar.classList.toggle('visible'); 
 });
 
-
-
-
 // Filtro de búsqueda
-const searchInput = document.querySelector('#input-search-products');
+const searchInput = document.getElementById('input-search-products');
 const searchButton = document.querySelector('.search-button');
 
 const performSearch = () => {
-    const searchTerm = searchInput.value.trim();
+    const searchTerm = searchInput.value.trim(); //accede al texto, trim elimina espacios en blanco
     if (searchTerm) {
         const encodedSearchTerm = encodeURIComponent(searchTerm); //transforma el término de búsqueda para que sea incrustado en la URL
         window.location.href = `./cataloge.html?q=${encodedSearchTerm}`;// Redirige al catálogo con el término de búsqueda como parámetro 'q'
@@ -51,7 +48,7 @@ if (searchInput) {
 }
 
 // boton newsletter
-const newsletterbutton = document.querySelector('#btn-newsletter');
+const newsletterbutton = document.getElementById('btn-newsletter');
 const messageNews = document.getElementById('messageNews');
 newsletterbutton.addEventListener('click', (event) => {
     event.preventDefault(); //para que no recargue la página al hacer click

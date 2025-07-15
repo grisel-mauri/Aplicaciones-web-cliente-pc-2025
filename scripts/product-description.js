@@ -28,12 +28,21 @@ function createDescription(product) {
 
     const addToCartButton = document.createElement('button');
     addToCartButton.textContent = 'Agregar al carrito';
+
+    const messageCart = document.createElement('p');
+    messageCart.classList.add('message-cart');
+    messageCart.textContent = ''; // Inicialmente vacío
+
     addToCartButton.addEventListener('click', () => {
         const cartProducts = JSON.parse(localStorage.getItem('cart')) || [];
         const exists = cartProducts.find(item => item.id === product.id);
         if (!exists) {
             cartProducts.push(product);
             localStorage.setItem('cart', JSON.stringify(cartProducts));
+            messageCart.textContent = '¡Agregado al carrito!';
+        }
+        else {
+            messageCart.textContent = 'El producto ya está en el carrito';
         }
     });
 
@@ -42,6 +51,7 @@ function createDescription(product) {
     bookDetails.appendChild(gender);
     bookDetails.appendChild(price);
     bookDetails.appendChild(addToCartButton);
+    bookDetails.appendChild(messageCart);
 
     const bookSinopsis = document.createElement('article');
     bookSinopsis.classList.add('sinopsis');
